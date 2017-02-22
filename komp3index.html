@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.1/react-dom.js"></script>
+
+	<style>
+		.course {
+			padding: 10px;
+			border: 1px solid #e8e8e8;
+		}
+	</style>
+</head>	
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1> Witaj w Eduweb! </h1>
+				<div id="root">
+					
+				</div>
+
+				<button class="btn btn-default" id="grow"> + </button>
+				<button class="btn btn-default" id="shrink"> - </button>
+				<button class="btn btn-default" id="prev"> Prev </button>
+				<button class="btn btn-default" id="next"> Next </button>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript" src="courses_data.js"></script>
+
+	<script type="text/javascript">
+		var div = React.DOM.div,
+		font_size = 2;
+
+		var index = 0,
+			data = courses_data[index];
+
+		var course = function(data) {
+			var isNew = data.is_new ? React.createElement('p',{style: {fontSize: (font_size/2) + 'em', fontWeight: 'bolder'}}, 'Nowość') : null,
+				isPromo = data.is_promo ? React.createElement('p',{style: {fontSize: (font_size/2) + 'em', fontWeight: 'bolder'}}, 'Promocja') : null;
+
+			return div({id:'kurs', className:'media course'},
+				div({className: 'media-left'},
+					React.createElement('img', {className: 'media-object', alt: 'Miniatura Kursu', src: data.image})
+				),
+				div({className: 'media-body'},
+					React.createElement('h3',{className: 'media-heading', style: {fontSize: font_size + 'em'}}, data.title), 
+					React.createElement('p',{style: {fontSize: (font_size/2) + 'em'}}, data.description),
+					isNew,
+					isPromo
+				)
+			)
+		}
+
+		document.getElementById('grow').addEventListener('click', function() {
+			font_size += 1;
+			render();
+		});
+		document.getElementById('shrink').addEventListener('click', function() {
+			font_size === 1 ? font_size : (font_size -= 1);
+			render();
+		});
+		document.getElementById('prev').addEventListener('click', function() {
+			index === 0 ? 0 : index -= 1;
+			render();
+		});
+		document.getElementById('next').addEventListener('click', function() {
+			index += 1;
+			render();
+		});
+
+		function render() {
+			data = courses_data[index];
+			ReactDOM.render(course(data), document.getElementById('root'));
+		}
+
+		render();
+
+	</script>
+</body>
+</html>
