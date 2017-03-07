@@ -1,0 +1,56 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /Users/eddieduro/.nvm/versions/node/v6.0.0/bin/node /Users/eddieduro/.nvm/versions/node/v6.0.0/bin/firebase init
+[debug] CLI Version:  3.0.3
+[debug] Platform:     darwin
+[debug] Node Version: v6.0.0
+[debug] Time:         Fri Jun 24 2016 05:16:17 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[info] 
+     🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥     🔥🔥🔥     🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥     🔥🔥 🔥🔥       🔥🔥     🔥🔥  🔥🔥   🔥🔥  🔥🔥       🔥🔥
+     🔥🔥🔥🔥🔥🔥    🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥   🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥    🔥🔥  🔥🔥       🔥🔥     🔥🔥 🔥🔥     🔥🔥       🔥🔥 🔥🔥
+     🔥🔥       🔥🔥🔥🔥 🔥🔥     🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥     🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/eddieduro/Desktop/react_projects/spotify-search
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects 
+[debug] <<< HTTP RESPONSE 200
+[info] 
+=== Database Setup
+[info] 
+[info] Firebase Realtime Database Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] >>> HTTP REQUEST GET https://undefined.firebaseio.com/.settings/rules.json 
+[debug] Error: socket hang up
+    at TLSSocket.onHangUp (_tls_wrap.js:1087:19)
+    at TLSSocket.g (events.js:286:16)
+    at emitNone (events.js:91:20)
+    at TLSSocket.emit (events.js:185:7)
+    at endReadableNT (_stream_readable.js:926:12)
+    at _combinedTickCallback (internal/process/next_tick.js:74:11)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+[error] 
+[error] Error: Server Error. Please try again in a few minutes.
+[debug] Error Context: {
+  "requestOptions": {
+    "method": "GET",
+    "json": true,
+    "url": "https://undefined.firebaseio.com/.settings/rules.json",
+    "headers": {
+      "authorization": "Bearer ya29.Ci8LA5Glu4zJiacRsLhBLfx7fXvJDKOWMv1qBnThpwE9ZnalvKE4BuGSptrvXBDbFQ"
+    }
+  }
+}

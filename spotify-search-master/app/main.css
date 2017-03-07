@@ -1,0 +1,52 @@
+.appear-enter {
+	transition-duration: .7s;
+	transition-property: opacity;
+	transition-timing-function: ease-out;
+	opacity: 0;
+}
+
+.appear-enter.appear-enter-active {
+	opacity: 1;
+}
+
+.appear-leave {
+	opacity: 0;
+}
+
+.main-container{
+  max-width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 600px;
+}
+
+.container-fluid {
+	max-width: 500px;
+  margin-top: 20em;
+}
+
+body {
+	background-color: #444;
+}
+
+.list-group-item {
+	border: none;
+}
+
+li.text-center {
+	background-color: white;
+	padding-top: 1em;
+	padding-bottom: 2em;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.jumbotron h1 {
+	color: white;
+}
+
+.lead {
+	color: white;
+}
