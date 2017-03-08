@@ -5,15 +5,24 @@ import dispatcher from '../dispatcher';
 class ArtistStore extends EventEmitter {
 	constructor() {
 		super();
-		this.artists = []
+		this.artists = [];
+		this.limit = 2;
 	};
 
-	getAll() {
+	getArtists() {
 		return this.artists;
+	}
+
+	getLimit() {
+		return this.limit;
 	}
 
 	setArtists(newArtists) {
 		this.artists = newArtists;
+	}
+
+	addLimit(value) {
+		this.limit += value;
 	}
 
 	handleActions(action) {
@@ -21,6 +30,11 @@ class ArtistStore extends EventEmitter {
 		switch(action.type) {
 			case "FETCH_ARTISTS": {
 				this.setArtists(action.artists);
+				this.emit('change');
+				break;
+			}
+			case "INCREASE_LIMIT": {
+				this.addLimit(2);
 				this.emit('change');
 				break;
 			}

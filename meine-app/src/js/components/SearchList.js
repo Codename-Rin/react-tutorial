@@ -8,37 +8,47 @@ export default class SearchList extends React.Component {
 
 	constructor() {
 		super();
-		this.getArtists = this.getArtists.bind(this);
+		this.getState = this.getState.bind(this);
 		this.state = {
-			artists: ArtistStore.getAll(),
-			limit: 2
+			artists: ArtistStore.getArtists(),
+			limit: ArtistStore.getLimit()
 		}
 	}
 
 	componentWillMount() {
-	  ArtistStore.on("change", this.getArtists);
+	  ArtistStore.on("change", this.getState);
 	}
 
 	componentWillUnmount() {
-	  ArtistStore.removeListener("change", this.getArtists);
+	  ArtistStore.removeListener("change", this.getState);
 	}
 
-	getArtists() {
+	getState() {
 		this.setState({
-			artists: ArtistStore.getAll()
+			artists: ArtistStore.getArtists(),
+			limit: ArtistStore.getLimit()
 		});
 	}
 
+	loadMore() {
+		SpotifyActions.loadMore();
+	}
+
 	render() {
-		const { artists } = this.state;
+		const artists = this.state.artists.slice(0, this.state.limit);
 
 		const ArtistComponents = artists.map((artist) => {
 		    return <Artist key={artist.id} {...artist}/>;
 		});
 
+		const btnDisabled = this.state.limit < this.state.artists.length ? '' : 'disabled';
+
 		return (
 			<div className="row">
 				{ ArtistComponents }
+				<div className="col-md-12">
+					<button class="btn btn-success" disabled={btnDisabled} onClick={this.loadMore.bind(this)}>Load More</button>
+				</div>
 			</div>
 		);
 	}

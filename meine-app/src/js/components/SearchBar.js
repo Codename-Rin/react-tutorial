@@ -10,7 +10,7 @@ export default class SearchBar extends React.Component {
 		this.getArtists = this.getArtists.bind(this);
 		this.state = {
 			artistName: '',
-			artists: ArtistStore.getAll()
+			artists: ArtistStore.getArtists()
 		}
 	}
 
@@ -28,12 +28,11 @@ export default class SearchBar extends React.Component {
 
 	getArtists() {
 		this.setState({
-			artists: ArtistStore.getAll()
+			artists: ArtistStore.getArtists()
 		});
 	}
 
 	loadArtists(artistName) {
-		console.log(this.state.artistName);
 		SpotifyActions.loadArtists(this.state.artistName);
 	}
 
@@ -43,8 +42,13 @@ export default class SearchBar extends React.Component {
 	}
 
 	render() {
+
+		const searchStyles = {
+			marginBottom: '20px'
+		}
+
 		return (
-			<div>
+			<div style={searchStyles}>
 				<form onSubmit={this.loadArtists.bind(this)}>
 				  <div class="form-group">
 				    <label for="searchArtist">Artist Name</label>
